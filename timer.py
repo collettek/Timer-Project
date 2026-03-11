@@ -17,12 +17,16 @@ def countdown(t):
         # print the timer on the same line 
         print(timer, end="\r")
         
+        try:
         # pause the timer for 1 second 
-        time.sleep(1)
-        
-        # decrease the time by 1 second
-        t -= 1
+            time.sleep(1)
 
+        # decrease the time by 1 second
+            t -= 1
+
+        except KeyboardInterrupt:
+            input("\n Paused. Press Enter to resume.")
+        
     print("Time IS UP!      ") 
 
 seconds_input = input("How long in seconds do you want to set the timer for? ")
@@ -30,10 +34,7 @@ seconds_input = input("How long in seconds do you want to set the timer for? ")
 # check if its a valid number
 if seconds_input.isdigit():
     seconds = int(seconds_input)
+    print("Press Ctrl+C anytime to pause")
     countdown(seconds)
 else:
     print("Invalid input. Please enter a valid number of seconds.")
-
-    #add a pause function
-    
-
